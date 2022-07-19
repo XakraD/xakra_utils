@@ -11,7 +11,7 @@ game "rdr3"
 client_scripts {
 	'config.lua',
 	'client/client.lua',
-	'warmenu.lua',
+	'client/warmenu.lua',
 }
 
 server_scripts {

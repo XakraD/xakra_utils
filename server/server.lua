@@ -14,7 +14,7 @@ if Config.PlayersPed then
         local User = VorpCore.getUser(_source).getUsedCharacter
         local charid =  User.charIdentifier
         if Config.PlayersPedList[charid] then
-            TriggerClientEvent("xakra_ped:set_ped",_source, Config.PlayersPedList[charid])
+            TriggerClientEvent("xakra_utils:set_ped",_source, Config.PlayersPedList[charid])
         end
         
     end)

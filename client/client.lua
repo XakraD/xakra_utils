@@ -84,8 +84,8 @@ AddEventHandler('enter:menu', function()
   end)
 
 -- CHANGE PED
-RegisterNetEvent("xakra_ped:set_ped")
-AddEventHandler("xakra_ped:set_ped", function(ped)
+RegisterNetEvent("xakra_utils:set_ped")
+AddEventHandler("xakra_utils:set_ped", function(ped)
     local model = GetHashKey(ped)
     local player = PlayerId()
 

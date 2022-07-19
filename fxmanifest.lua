@@ -1,6 +1,6 @@
-author 'Xakra <Discord:Xakra#8145>'
+author 'Xakra <Discord:Xakra#8145:https://discord.gg/kmsqB6xQjH>'
 version '1.0.0'
-description 'xakra_peyote'
+description 'xakra_utils'
 
 fx_version "adamant"
 lua54 "on"
@@ -10,7 +10,8 @@ game "rdr3"
 
 client_scripts {
 	'config.lua',
-	'client/client.lua'
+	'client/client.lua',
+	'warmenu.lua',
 }
 
 server_scripts {

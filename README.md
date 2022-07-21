@@ -1,8 +1,8 @@
 # xakra_utils
 ## Requirements
-vorp_core
-vorp_inventory
-vorp_character
+- vorp_core
+- vorp_inventory
+- vorp_character
 
 ## Description
 This script has three functions (Each function can be disabled):
@@ -18,7 +18,7 @@ This script has three functions (Each function can be disabled):
 - You will need to add an image called 'item_name.png' (with png format) in the 'vorp_inventory/html/items' folder. You can use the one in the 'icon' folder.
 - Correctly configure the options of the config file, you will be able to disable or enable any of the 3 functions.
 
-Video: https://youtu.be/DUdS1GreM_o
+Video: https://youtu.be/AX5hQqU9ze4
 
 
 

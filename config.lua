@@ -15,7 +15,7 @@ Config.PlayersPedList = {
 ------------------ CHANGE JOB ------------------
 Config.StrPressKey = "Pulsa [E] para abrir el menú" -- Text that shows to open the menu
 Config.StrNoJob = "No tienes ningún trabajo asigando" -- Text that is displayed when you do not have any jobs in the list
-Config.StrSetJob1 = "Set ha asignado el trabajo " -- Text when assigning work 1/2
+Config.StrSetJob1 = "Se te ha asignado el trabajo " -- Text when assigning work 1/2
 Config.StrSetJob2 = " de nivel " -- Text when assigning work 2/2
 
 Config.StrTitle = "Cambio de trabajo" -- Menu title

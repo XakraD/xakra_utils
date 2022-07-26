@@ -45,7 +45,7 @@ Config.ListPlacesJob = {
 Config.PlayersJobList = {
     [630] = { -- Example 1
         {jobname="doctor", jobgrade=3},
-        {jobname="workshop_cart", jobgrade=0},
+        {jobname="workshop_cart", jobgrade=1},
         {jobname="barman", jobgrade=1},
     },
 

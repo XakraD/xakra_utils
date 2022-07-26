@@ -29,6 +29,11 @@ AddEventHandler("xakra_utils:player_job", function()
     TriggerClientEvent("xakra_utils:open_menu",_source,charid,_source)
 end)
 
+RegisterServerEvent("xakra_utils:update_job")
+AddEventHandler("xakra_utils:update_job", function(jobname,jobgrade,player_source)
+    TriggerEvent("vorp:setJob", player_source, jobname, jobgrade)
+end)
+
 if Config.Pipepeace then
     VORP.RegisterUsableItem("pipepeace", function(data)
         TriggerClientEvent('xakra_utils:pipepeace', data.source)

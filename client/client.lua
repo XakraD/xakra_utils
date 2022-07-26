@@ -39,7 +39,7 @@ Citizen.CreateThread(function()
             if Config.PlayersJobList[player_charid] then
                 for i, jobs in pairs(Config.PlayersJobList[player_charid]) do
                     if WarMenu.Button(jobs.jobname) then
-                        ExecuteCommand("setjob "..player_source.." "..jobs.jobname.." "..jobs.jobgrade)
+                        TriggerServerEvent("xakra_utils:update_job",jobs.jobname,jobs.jobgrade,player_source)
                         TriggerEvent("vorp:TipRight", Config.StrSetJob1..jobs.jobname..Config.StrSetJob2..jobs.jobgrade, 6000)
                         WarMenu.CloseMenu()
                     end

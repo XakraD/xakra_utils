@@ -49,8 +49,8 @@ Config.PlayersJobList = {
         {jobname="barman", jobgrade=1},
     },
 
-    [631] = { -- Example 2
-        {jobname="periodist", jobgrade=2},
-        {jobname="miner", jobgrade=0},
-    },
+    -- [631] = { -- Example 2
+    --     {jobname="periodist", jobgrade=2},
+    --     {jobname="miner", jobgrade=0},
+    -- },
 }

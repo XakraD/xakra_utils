@@ -2,25 +2,29 @@ local player_charid
 local player_source
 -- CHANGE JOBS
 Citizen.CreateThread(function()
-    for i, location in pairs(Config.ListPlacesJob) do
-        if location.enable_blip then
-            Config.ListPlacesJob[i].BlipHandle = N_0x554d9d53f696d002(1664425300, location.coords.x, location.coords.y, location.coords.z)
-            SetBlipSprite(Config.ListPlacesJob[i].BlipHandle , Config.JobBlip.sprite, 1)
-            SetBlipScale(Config.ListPlacesJob[i].BlipHandle , 0.2)
-            Citizen.InvokeNative(0x9CB1A1623062F402, Config.ListPlacesJob[i].BlipHandle , Config.JobBlip.name)
+    if Config.ChangeJobs then
+        for i, location in pairs(Config.ListPlacesJob) do
+            if location.enable_blip then
+                Config.ListPlacesJob[i].BlipHandle = N_0x554d9d53f696d002(1664425300, location.coords.x, location.coords.y, location.coords.z)
+                SetBlipSprite(Config.ListPlacesJob[i].BlipHandle , Config.JobBlip.sprite, 1)
+                SetBlipScale(Config.ListPlacesJob[i].BlipHandle , 0.2)
+                Citizen.InvokeNative(0x9CB1A1623062F402, Config.ListPlacesJob[i].BlipHandle , Config.JobBlip.name)
+            end
         end
     end
 end)
 Citizen.CreateThread(function()
-    while true do
-        local pcoords = GetEntityCoords(PlayerPedId())
-        for _, location in pairs(Config.ListPlacesJob) do
-            local dist = GetDistanceBetweenCoords(pcoords, location.coords, 1)
-            if dist < 6.0 then
-                Citizen.InvokeNative(0x2A32FAA57B937173, 0x94FDAE17, location.coords.x, location.coords.y, location.coords.z-1.2, 0, 0, 0, 0, 0, 0, 1.0, 1.0, 0.4, 0, 128, 0, 30, 0, 0, 2, 0, 0, 0, 0)
-            end
-        end 
-        Citizen.Wait(10)
+    if Config.ChangeJobs then
+        while true do
+            local pcoords = GetEntityCoords(PlayerPedId())
+            for _, location in pairs(Config.ListPlacesJob) do
+                local dist = GetDistanceBetweenCoords(pcoords, location.coords, 1)
+                if dist < 6.0 then
+                    Citizen.InvokeNative(0x2A32FAA57B937173, 0x94FDAE17, location.coords.x, location.coords.y, location.coords.z-1.2, 0, 0, 0, 0, 0, 0, 1.0, 1.0, 0.4, 0, 128, 0, 30, 0, 0, 2, 0, 0, 0, 0)
+                end
+            end 
+            Citizen.Wait(10)
+        end
     end
 end)
 
@@ -106,17 +110,6 @@ AddEventHandler("xakra_utils:set_ped", function(ped)
         end
     end
 end)
-
-function PerformRequest(hash)
-    RequestModel(hash, 0)
-    local bacon = 1
-    while not Citizen.InvokeNative(0x1283B8B89DD5D1B6, hash) do
-        Citizen.InvokeNative(0xFA28FE3A6246FC30, hash, 0)
-        bacon = bacon + 1
-        Citizen.Wait(0)
-        if bacon >= 100 then break end
-    end
-end
 
 -- USE INDIAN PIPE
 RegisterNetEvent('xakra_utils:pipepeace')

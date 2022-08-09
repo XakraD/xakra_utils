@@ -2,12 +2,12 @@ local player_charid
 local player_source
 -- CHANGE JOBS
 Citizen.CreateThread(function()
-    for _, location in pairs(Config.ListPlacesJob) do
+    for i, location in pairs(Config.ListPlacesJob) do
         if location.enable_blip then
-            local blip = N_0x554d9d53f696d002(1664425300, location.coords.x, location.coords.y, location.coords.z)
-            SetBlipSprite(blip, Config.JobBlip.sprite, 1)
-            SetBlipScale(blip, 0.2)
-            Citizen.InvokeNative(0x9CB1A1623062F402, blip, Config.JobBlip.name)
+            Config.ListPlacesJob[i].BlipHandle = N_0x554d9d53f696d002(1664425300, location.coords.x, location.coords.y, location.coords.z)
+            SetBlipSprite(Config.ListPlacesJob[i].BlipHandle , Config.JobBlip.sprite, 1)
+            SetBlipScale(Config.ListPlacesJob[i].BlipHandle , 0.2)
+            Citizen.InvokeNative(0x9CB1A1623062F402, Config.ListPlacesJob[i].BlipHandle , Config.JobBlip.name)
         end
     end
 end)
@@ -61,7 +61,7 @@ Citizen.CreateThread(function()
                 local pcoords = GetEntityCoords(PlayerPedId())
                 local dist = GetDistanceBetweenCoords(pcoords, location.coords, 1)
             
-                if dist < 1.0 then --f6
+                if dist < 1.0 then
                     TriggerEvent("enter:menu")
                     if IsControlPressed(0,0x018C47CF) then
                         TriggerServerEvent("xakra_utils:player_job")
@@ -86,16 +86,24 @@ AddEventHandler('enter:menu', function()
 -- CHANGE PED
 RegisterNetEvent("xakra_utils:set_ped")
 AddEventHandler("xakra_utils:set_ped", function(ped)
-    local model = GetHashKey(ped)
+    local model = GetHashKey(ped.model)
     local player = PlayerId()
 
-    if not IsModelValid(model) then return end
-    PerformRequest(model)
+    if IsModelValid(model) then
+		RequestModel(model)
         
-    if HasModelLoaded(model) then
-        Citizen.InvokeNative(0xED40380076A31506, player, model, false)
-        Citizen.InvokeNative(0x283978A15512B2FE, PlayerPedId(), true)
-        SetModelAsNoLongerNeeded(model)
+        if HasModelLoaded(model) then
+            Citizen.InvokeNative(0xED40380076A31506, player, model, false)
+
+            if ped.outfit then
+                print("outfit")
+                SetPedOutfitPreset(PlayerPedId(), ped.outfit)
+                SetModelAsNoLongerNeeded(model)
+            else
+                Citizen.InvokeNative(0x283978A15512B2FE, PlayerPedId(), true)
+                SetModelAsNoLongerNeeded(model)
+            end
+        end
     end
 end)
 
@@ -275,3 +283,14 @@ function EPrompt(text, button, hold)
         PromptRegisterEnd(ChangeStance)
     end)
 end
+
+AddEventHandler('onResourceStop', function(resource)
+	if resource == GetCurrentResourceName() then
+        WarMenu.CloseMenu()
+        for i, v in pairs(Config.ListPlacesJob) do
+            if v.BlipHandle then
+                RemoveBlip(v.BlipHandle)
+            end
+        end	
+	end
+end)

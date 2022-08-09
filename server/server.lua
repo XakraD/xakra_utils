@@ -10,7 +10,6 @@ VORP = exports.vorp_inventory:vorp_inventoryApi()
 if Config.PlayersPed then
     RegisterCommand('ped', function(source, args)
         local _source = source
-        local name = GetPlayerName(_source)
         local User = VorpCore.getUser(_source).getUsedCharacter
         local charid =  User.charIdentifier
         if Config.PlayersPedList[charid] then

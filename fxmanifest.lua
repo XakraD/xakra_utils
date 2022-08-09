@@ -1,5 +1,5 @@
 author 'Xakra <Discord:Xakra#8145:https://discord.gg/kmsqB6xQjH>'
-version '1.0.0'
+version '1.1.0'
 description 'xakra_utils'
 
 fx_version "adamant"

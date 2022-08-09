@@ -6,10 +6,10 @@ Config.PlayersPed = true -- Users will be able to use the /ped function
 Config.ChangeJobs = true -- Users will be able to change jobs
 
 ------------------ LIST PLAYERS PED ------------------
--- [CHARIDENTIFIER] = "NAME_MODEL"
+-- [CHARIDENTIFIER] = {"NAME_MODEL", number or false}
 Config.PlayersPedList = {
-    [630] = "CS_oddfellowspinhead", -- Example 1
-    [631] = "RCSP_ODDFELLOWS_MALES_01", -- Example 2
+    [630] = {model= "CS_oddfellowspinhead", outfit = 1}, -- Example 1
+    -- [631] = "RCSP_ODDFELLOWS_MALES_01", -- Example 2
 }
 
 ------------------ CHANGE JOB ------------------
@@ -29,12 +29,12 @@ Config.JobBlip = {
 
 -- list of places to change jobs
 Config.ListPlacesJob = {
-    pos1 = { -- Example Rhodes office poster
+    { -- Example Rhodes office poster
         enable_blip = true, -- true(active)/false(disabled)
         coords = vector3(1353.13, -1305.15, 77.09),
     },
 
-    pos2 = { -- Example Saint Denis office poster (blip disabled)
+    { -- Example Saint Denis office poster (blip disabled)
         enable_blip = false,
         coords = vector3(2514.61, -1320.65, 48.72),
     },
@@ -45,7 +45,7 @@ Config.ListPlacesJob = {
 Config.PlayersJobList = {
     [630] = { -- Example 1
         {jobname="doctor", jobgrade=3},
-        {jobname="workshop_cart", jobgrade=1},
+        {jobname="workshop", jobgrade=1},
         {jobname="barman", jobgrade=1},
     },
 

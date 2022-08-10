@@ -100,7 +100,6 @@ AddEventHandler("xakra_utils:set_ped", function(ped)
             Citizen.InvokeNative(0xED40380076A31506, player, model, false)
 
             if ped.outfit then
-                print("outfit")
                 SetPedOutfitPreset(PlayerPedId(), ped.outfit)
                 SetModelAsNoLongerNeeded(model)
             else
@@ -279,11 +278,13 @@ end
 
 AddEventHandler('onResourceStop', function(resource)
 	if resource == GetCurrentResourceName() then
-        WarMenu.CloseMenu()
-        for i, v in pairs(Config.ListPlacesJob) do
-            if v.BlipHandle then
-                RemoveBlip(v.BlipHandle)
-            end
-        end	
+        if Config.ChangeJobs then
+            WarMenu.CloseMenu()
+            for i, v in pairs(Config.ListPlacesJob) do
+                if v.BlipHandle then
+                    RemoveBlip(v.BlipHandle)
+                end
+            end	
+        end
 	end
 end)

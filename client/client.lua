@@ -39,6 +39,7 @@ Citizen.CreateThread(function()
     WarMenu.CreateMenu('change_jobs', Config.StrTitle)
     WarMenu.SetSubTitle('change_jobs', Config.StrSubTitle)
     while true do
+        local t = 4
         if WarMenu.IsMenuOpened('change_jobs') then
             if Config.PlayersJobList[player_charid] then
                 for i, jobs in pairs(Config.PlayersJobList[player_charid]) do
@@ -53,8 +54,10 @@ Citizen.CreateThread(function()
                 WarMenu.CloseMenu()
             end
             WarMenu.Display()
+        else
+            t = 500
         end
-        Citizen.Wait(10)
+        Citizen.Wait(t)
     end
 end)
 

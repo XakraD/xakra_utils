@@ -30,7 +30,10 @@ end)
 
 RegisterServerEvent("xakra_utils:update_job")
 AddEventHandler("xakra_utils:update_job", function(jobname,jobgrade,player_source)
-    TriggerEvent("vorp:setJob", player_source, jobname, jobgrade)
+    local Character = VorpCore.getUser(player_source).getUsedCharacter
+    Character.setJob(jobname)
+    Character.setJobGrade(jobgrade)
+    -- TriggerEvent("vorp:setJob", player_source, jobname, jobgrade)
 end)
 
 if Config.Pipepeace then

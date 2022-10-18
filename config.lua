@@ -8,7 +8,7 @@ Config.ChangeJobs = true -- Users will be able to change jobs
 ------------------ LIST PLAYERS PED ------------------
 -- [CHARIDENTIFIER] = {"NAME_MODEL", number or false}
 Config.PlayersPedList = {
-    [630] = {model= "CS_oddfellowspinhead", outfit = 1}, -- Example 1
+    [630] = {model= "CS_oddfellowspinhead", outfit = 2}, -- Example 1
     -- [631] = "RCSP_ODDFELLOWS_MALES_01", -- Example 2
 }
 

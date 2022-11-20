@@ -97,18 +97,19 @@ AddEventHandler("xakra_utils:set_ped", function(ped)
     local player = PlayerId()
 
     if IsModelValid(model) then
-		RequestModel(model)
+        RequestModel(model)
+        while not HasModelLoaded(model) do
+            Citizen.Wait(100)
+        end
         
-        if HasModelLoaded(model) then
-            Citizen.InvokeNative(0xED40380076A31506, player, model, false)
+        Citizen.InvokeNative(0xED40380076A31506, player, model, false)
 
-            if ped.outfit then
-                SetPedOutfitPreset(PlayerPedId(), ped.outfit)
-                SetModelAsNoLongerNeeded(model)
-            else
-                Citizen.InvokeNative(0x283978A15512B2FE, PlayerPedId(), true)
-                SetModelAsNoLongerNeeded(model)
-            end
+        if ped.outfit then
+            SetPedOutfitPreset(PlayerPedId(), ped.outfit)
+            SetModelAsNoLongerNeeded(model)
+        else
+            Citizen.InvokeNative(0x283978A15512B2FE, PlayerPedId(), true)
+            SetModelAsNoLongerNeeded(model)
         end
     end
 end)

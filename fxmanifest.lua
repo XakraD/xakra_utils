@@ -1,5 +1,5 @@
 author 'Xakra <Discord:Xakra#8145:https://discord.gg/kmsqB6xQjH>'
-version '1.1.0'
+version '1.2'
 description 'xakra_utils'
 
 fx_version "adamant"
@@ -11,7 +11,6 @@ game "rdr3"
 client_scripts {
 	'config.lua',
 	'client/client.lua',
-	'client/warmenu.lua',
 }
 
 server_scripts {
